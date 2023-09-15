@@ -4,8 +4,10 @@ public class Main
 	{
 		int [][] matrixC;
 		int [][] matrixD;
+		int [][] matrixE;
 		matrixC = new int[3][3];
-		matrixD = new int [3][3];
+		matrixD = new int[3][3];
+		matrixE = new int[3][3];
 		System.out.println("Матрица C: ");
 		for (int i = 0; i < 3; i++)
 		{
@@ -35,6 +37,20 @@ public class Main
 		    {
 		        sumMatrix[i][j] = matrixC[i][j] + matrixD[i][j];
 		        System.out.print(sumMatrix[i][j] + " ");
+		    }
+		    System.out.println();
+		}
+		System.out.println("\nПроизведение матриц: ");
+		for (int i = 0; i < matrixE.length; i++)
+		{
+		    for (int j = 0; j < matrixE[0].length; j++)
+		    {
+		        matrixE[i][j] = 0;
+		        for (int k = 0; k < matrixE[0].length; k++)
+		        {
+		            matrixE[i][j] += matrixC[i][k] * matrixD[k][j];
+		        }
+		        System.out.print(matrixE[i][j] + " ");
 		    }
 		    System.out.println();
 		}
