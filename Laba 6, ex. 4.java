@@ -4,7 +4,6 @@ public class Main
 	{
 		int [][] array;
 		array = new int[3][4];
-		int sum = 0;
 		for (int i = 0; i < 3; i++)
 		{
 		    for (int j = 0; j < 4; j++)
