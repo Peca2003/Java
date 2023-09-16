@@ -6,17 +6,17 @@ public class Main
 		array = new int[3][4];
 		int sum = 0;
 		System.out.println("Двумерный массив:");
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < array.length; i++)
 		{
-		    for (int j = 0; j < 4; j++)
+		    for (int j = 0; j < array[i].length; j++)
 		    {
 		        array[i][j] = (int)Math.round(Math.random() * 30);
 		        sum += array[i][j];
 		    }
 		}
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < array.length; i++)
 		{
-		    for (int j = 0; j < 4; j++)
+		    for (int j = 0; j < array[i].length; j++)
 		    {
 		        System.out.print(array[i][j] + " ");
 		    }
