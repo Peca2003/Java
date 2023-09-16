@@ -9,9 +9,9 @@ public class Main
 		matrixD = new int[3][3];
 		matrixE = new int[3][3];
 		System.out.println("Матрица C: ");
-		for (int i = 0; i < array.length; i++)
+		for (int i = 0; i < matrixC.length; i++)
 		{
-		    for (int j = 0; j < array[i].length; j++)
+		    for (int j = 0; j < matrixC[i].length; j++)
 		    {
 		        matrixC[i][j] = (int)Math.round(Math.random() * 99);
 		        System.out.print(matrixC[i][j] + " ");
@@ -19,9 +19,9 @@ public class Main
 		    System.out.println();
 		}
 		System.out.println("\nМатрица D: ");
-		for (int i = 0; i < array.length; i++)
+		for (int i = 0; i < matrixD.length; i++)
 		{
-		    for (int j = 0; j < array[i].length; j++)
+		    for (int j = 0; j < matrixD[i].length; j++)
 		    {
 		        matrixD[i][j] = (int)Math.round(Math.random() * 99);
 		        System.out.print(matrixD[i][j] + " ");
@@ -31,9 +31,9 @@ public class Main
 		System.out.println("\nСумма матриц: ");
 		int [][] sumMatrix;
 		sumMatrix = new int[3][3];
-		for (int i = 0; i < array.length; i++)
+		for (int i = 0; i < sumMatrix.length; i++)
 		{
-		    for (int j = 0; j < array[i].length; j++)
+		    for (int j = 0; j < sumMatrix[i].length; j++)
 		    {
 		        sumMatrix[i][j] = matrixC[i][j] + matrixD[i][j];
 		        System.out.print(sumMatrix[i][j] + " ");
