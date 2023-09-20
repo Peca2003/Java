@@ -14,7 +14,7 @@ public class Main
 		    System.out.println();
 		}
 		System.out.println("\nТретья строка матрицы: ");
-		for (int i = 2; i < array.length; i++)
+		for (int i = 2; i < 3; i++)
 		{
 		    for (int j = 0; j < array[i].length; j++)
 		    {
