@@ -1,0 +1,160 @@
+package mountain;
+import java.util.Scanner;
+
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in, "utf-8");
+        System.setProperty("console.encoding","utf-8");
+
+
+        System.out.println("Введите количество гор: ");
+        int numberMountains = sc.nextInt();
+        Mountain mount;
+        Mountain [] mountain = new Mountain[numberMountains];
+
+
+        //Заполнение информации
+        System.out.println("Введите информацию о горах: ");
+        for (int i = 0; i < mountain.length; ++i)
+        {
+            sc.nextLine();
+            mountain[i] = new Mountain();
+            System.out.print("Название " + (i + 1) + "-й горы: ");
+            mountain[i].setM_MountainName(sc.nextLine());
+            System.out.print("Местоположение " + (i + 1) + "-й горы: ");
+            mountain[i].setM_Location(sc.nextLine());
+            System.out.print("Высота " + (i + 1) + "-й горы (м):");
+            mountain[i].setM_MountainHeight(sc.nextInt());
+        }
+
+
+        //Вывод информации
+        System.out.println("\nИнформация о горах: ");
+        for (Mountain value : mountain)
+        {
+            System.out.println(value.getM_MountainName() + "\t" + value.getM_Location() + "\t" + value.getM_MountainHeight() + " м");
+        }
+
+
+        //Определение самой высокой горы
+        int indexMaxHeight = 0;
+        int max = mountain[indexMaxHeight].getM_MountainHeight();
+        for (int i = 0; i < mountain.length; ++i)
+        {
+            if (mountain[i].getM_MountainHeight() > max)
+            {
+                max = mountain[i].getM_MountainHeight();
+                indexMaxHeight = i;
+            }
+        }
+        System.out.println("\nСамая высокая гора: ");
+        System.out.println(mountain[indexMaxHeight].getM_MountainName() + "\t" + mountain[indexMaxHeight].getM_MountainHeight() + " м");
+
+
+        //Определение вершин, высота которых больше 1000 м
+        int height = 1000;
+        System.out.println("\nВершины, высота которых больше 1000 м: ");
+        for (int i = 0; i < mountain.length; ++i)
+        {
+            if (mountain[i].getM_MountainHeight() > height)
+            {
+                System.out.println(mountain[i].getM_MountainName() + "\t" + mountain[i].getM_MountainHeight() + " м");
+            }
+        }
+
+
+        //Сортировка вершин по высоте
+        for (int i = 0; i < mountain.length - 1; ++i)
+        {
+            for (int j = 0; j < mountain.length - 1 - i; ++j)
+            {
+                if (mountain[j].getM_MountainHeight() < mountain[j + 1].getM_MountainHeight())
+                {
+                    Mountain temp = mountain[j];
+                    mountain[j] = mountain[j + 1];
+                    mountain[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println("\nСортированный список вершин по высоте: ");
+        for (int i = 0; i < mountain.length; ++i)
+        {
+            System.out.println(mountain[i].getM_MountainName() + "\t" + mountain[i].getM_MountainHeight() + " м");
+        }
+
+
+        //Поиск вершины по названию
+        int choiseMenu;
+        System.out.println("Хотите ли Вы найти вершину? (1 - да, 2 - нет)");
+        choiseMenu = sc.nextInt();
+
+
+        switch (choiseMenu)
+        {
+            case 1:
+                sc.nextLine();
+                System.out.println("\nВведите название вершины: ");
+                String name = sc.nextLine();
+                int nom = -1;
+
+                for (int i = 0; i < mountain.length; ++i)
+                {
+                    if (name.equalsIgnoreCase(mountain[i].getM_MountainName()))
+                        nom = i;
+                }
+                if (nom != -1)
+                {
+                    System.out.println("\nВершина найдена! Это вершина " + mountain[nom].getM_MountainName() + ", расположенная в " + mountain[nom].getM_Location() + ", высотой " + mountain[nom].getM_MountainHeight() + " м");
+                    int choise;
+                    System.out.println("Хотите ли Вы редактировать информацию о вершине? (1 - да, 2 - нет)");
+                    choise = sc.nextInt();
+
+                    switch (choise)
+                    {
+                        case 1:
+                            int selectionField;
+                            System.out.println("Выберите поле для редактирования (1 - название, 2 - расположение, 3 - высота)");
+                            selectionField = sc.nextInt();
+                            sc.nextLine();
+                            if (selectionField == 1)
+                            {
+                                System.out.println("Введите новое название вершины: ");
+                                mountain[nom].setM_MountainName(sc.nextLine());
+                            }
+
+                            if (selectionField == 2)
+                            {
+                                System.out.println("Введите новое расположение вершины: ");
+                                mountain[nom].setM_Location(sc.nextLine());
+                            }
+
+                            if (selectionField == 3)
+                            {
+                                System.out.println("Введите новую высоту вершины: ");
+                                mountain[nom].setM_MountainHeight(sc.nextInt());
+                            }
+                            System.out.println("Новая информация о вершине:");
+                            System.out.println(mountain[nom].getM_MountainName() + "\t" + mountain[nom].getM_Location() + "\t" + mountain[nom].getM_MountainHeight());
+                            break;
+                        case 2:
+                            System.out.println("Вы вышли из редактирования.");
+                            break;
+                        default:
+                            System.out.println("Такой пункт меню отсутствует!");
+                            break;
+                    }
+                }
+                else System.out.println("\nТакой вершины нет!");
+                break;
+            case 2:
+                System.out.println("Вы вышли из поиска.");
+                break;
+            default:
+                System.out.println("Пункт меню отсутствует!");
+                break;
+        }
+    }
+}
