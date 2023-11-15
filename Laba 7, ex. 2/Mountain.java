@@ -35,7 +35,6 @@ public class Mountain
     public static Mountain [] setMountainArray(int numberMountains)
     {
         Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8);
-        System.setProperty("console.encoding","utf-8");
         Mountain [] mountain = new Mountain[numberMountains];
 
         //Заполнение информации
@@ -97,11 +96,12 @@ public class Mountain
     //Сортировка вершин по высоте
     public static void sortMountainArray(Mountain [] mount)
     {
+        System.out.println("\nСортировка по возрастанию высот");
         for (int i = 0; i < mount.length - 1; ++i)
         {
             for (int j = 0; j < mount.length - 1 - i; ++j)
             {
-                if (mount[j].getM_MountainHeight() < mount[j + 1].getM_MountainHeight())
+                if (mount[j].getM_MountainHeight() > mount[j + 1].getM_MountainHeight())
                 {
                     Mountain temp = mount[j];
                     mount[j] = mount[j + 1];
@@ -109,13 +109,13 @@ public class Mountain
                 }
             }
         }
+        showMountainArray(mount);
     }
 
     //Поиск вершины по названию
     public static void searchMountain(Mountain [] mount)
     {
         Scanner sc = new Scanner(System.in, StandardCharsets.UTF_8);
-        System.setProperty("console.encoding","utf-8");
         int choiseMenu;
         System.out.println("Хотите ли Вы найти вершину? (1 - да, 2 - нет)");
         choiseMenu = sc.nextInt();
