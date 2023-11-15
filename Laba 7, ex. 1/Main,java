@@ -71,7 +71,7 @@ public class Main
         {
             for (int j = 0; j < mountain.length - 1 - i; ++j)
             {
-                if (mountain[j].getM_MountainHeight() < mountain[j + 1].getM_MountainHeight())
+                if (mountain[j].getM_MountainHeight() > mountain[j + 1].getM_MountainHeight())
                 {
                     Mountain temp = mountain[j];
                     mountain[j] = mountain[j + 1];
