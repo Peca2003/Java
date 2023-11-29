@@ -11,8 +11,7 @@ public class Engine
 
     @Override
     public String toString() {
-        return "Двигатель" +
-                "Мощность: " + m_Power + "\n" +
+        return "\nМощность: " + m_Power + "\n" +
                 "Производитель: " + m_Company + "\n";
     }
 }
