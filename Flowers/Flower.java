@@ -4,6 +4,7 @@ public class Flower
     private int m_ShelfLife;
     private double m_Price;
 
+
     public Flower(String manufacturer, int shelfLife, double price)
     {
         this.m_Manufacturer = manufacturer;
