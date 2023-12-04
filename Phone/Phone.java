@@ -6,12 +6,6 @@ public class Phone implements Serializable {
     private String model;
     private double weight;
 
-    public Phone() {
-        this.number = "";
-        this.model = "";
-        this.weight = 0;
-    }
-
     public Phone(String number, String model, double weight) {
         this(number, model);
         this.weight = weight;
@@ -22,6 +16,12 @@ public class Phone implements Serializable {
         this.model = model;
     }
 
+    public Phone() {
+        this.number = "";
+        this.model = "";
+        this.weight = 0;
+    }
+    
     public void receiveCall(String name) {
         System.out.println("Звонит " + name);
     }
