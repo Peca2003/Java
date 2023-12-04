@@ -1,51 +1,83 @@
-public class Phone
-{
-    private String _number;
-    private String _model;
-    private double _weight;
+import java.io.Serializable;
+import java.util.Objects;
 
-    public Phone(String number, String model, double weight)
-    {
+public class Phone implements Serializable {
+    private String number;
+    private String model;
+    private double weight;
+
+    public Phone() {
+        this.number = "";
+        this.model = "";
+        this.weight = 0;
+    }
+
+    public Phone(String number, String model, double weight) {
         this(number, model);
-        this._weight = weight;
+        this.weight = weight;
     }
 
-    public Phone(String number, String model)
-    {
-        this._number = number;
-        this._model = model;
+    public Phone(String number, String model) {
+        this.number = number;
+        this.model = model;
     }
 
-    public Phone()
-    {}
-
-    @Override
-    public String toString() {
-        return "Номер: " + _number + '\t' +
-                "Модель: " + _model + '\t' +
-                "Вес: " + _weight;
-    }
-
-    public void receiveCall(String name)
-    {
+    public void receiveCall(String name) {
         System.out.println("Звонит " + name);
     }
 
-    public void receiveCall(String name, String number)
-    {
+    public void receiveCall(String name, String number) {
         System.out.println("Звонит " + name + " с номера " + number);
     }
 
-    public String get_number() {
-        return _number;
+    public String getNumber() {
+        return number;
     }
 
-    public void sendMessage(String... numbers)
-    {
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void sendMessage(String... numbers) {
         System.out.println("Сообщение будет отправлено на номер(-а):");
-        for (String number : numbers)
-        {
-            System.out.println(number);
+        for (String num : numbers) {
+            System.out.println(num);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Phone phone = (Phone) o;
+        return Double.compare(weight, phone.weight) == 0 && Objects.equals(number, phone.number) && Objects.equals(model, phone.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, model, weight);
+    }
+
+    @Override
+    public String toString() {
+        return "Номер: " + number + '\t' +
+                "Модель: " + model + '\t' +
+                "Вес: " + weight;
     }
 }
